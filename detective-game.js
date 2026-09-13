@@ -41,7 +41,11 @@
 
   function ensure(){
     state.detective ||= {zone:"room",x:16,clues:[],trust:{Mira:0,Horloger:0,Masque:0,Reflet:0},visited:[],objective:"Trouve ce que cache la chambre."};
-    state.detective.clues ||= [];state.detective.trust ||= {Mira:0,Horloger:0,Masque:0,Reflet:0};
+    state.detective.clues ||= [];
+    state.detective.trust ||= {Mira:0,Horloger:0,Masque:0,Reflet:0};
+    state.detective.visited ||= [];
+    state.detective.objective ||= (zones[state.detective.zone]||zones.room).goal;
+    if(!zones[state.detective.zone]){state.detective.zone="room";state.detective.x=16;}
   }
   ensure();
 
