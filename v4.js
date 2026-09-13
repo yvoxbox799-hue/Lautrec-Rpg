@@ -229,3 +229,60 @@
   render();
   toast("Lautrec RPG V4 est prêt");
 })();
+
+
+/* V4.3 — retour immédiat du bouton Agir */
+(() => {
+  const box = document.querySelector(".actionbox");
+  const button = document.getElementById("actBtn");
+  const input = document.getElementById("freeAction");
+  if (!box || !button || !input || document.getElementById("actionFeedback")) return;
+
+  const feedback = document.createElement("div");
+  feedback.id = "actionFeedback";
+  feedback.className = "action-feedback";
+  feedback.setAttribute("role", "status");
+  feedback.setAttribute("aria-live", "polite");
+  box.insertAdjacentElement("afterend", feedback);
+
+  const showFeedback = (text, kind = "good") => {
+    feedback.className = "action-feedback show " + kind;
+    feedback.innerHTML = "<span>" + (kind === "bad" ? "!" : "✓") + "</span><p>" + esc(text) + "</p>";
+  };
+
+  button.onclick = () => {
+    const action = input.value.trim();
+    if (!action) {
+      showFeedback("Écris d'abord ce que Lautrec doit tenter.", "bad");
+      input.classList.remove("input-alert");
+      void input.offsetWidth;
+      input.classList.add("input-alert");
+      input.focus();
+      haptic(30);
+      return;
+    }
+
+    button.disabled = true;
+    button.classList.add("acting");
+    button.textContent = "Action…";
+    feedback.className = "action-feedback show pending";
+    feedback.innerHTML = "<span>◆</span><p>Le destin évalue ton action…</p>";
+    haptic(12);
+
+    setTimeout(() => {
+      const previousScene = state.scene;
+      inferAction(action);
+      input.value = "";
+      const latest = state.log[0];
+      let message = latest?.text || "Ton action a bien été prise en compte.";
+      let kind = latest?.kind === "bad" ? "bad" : "good";
+      if (state.combat) message = "Ton action déclenche un combat. Ouvre l'onglet Combat.";
+      else if (state.scene !== previousScene) message = "L'histoire avance : " + (scenes[state.scene]?.title || "nouvelle scène") + ".";
+      showFeedback(message, kind);
+      button.disabled = false;
+      button.classList.remove("acting");
+      button.textContent = "Agir";
+      tone(kind === "bad" ? 190 : 520, 0.12);
+    }, 180);
+  };
+})();
