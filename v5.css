@@ -34,3 +34,11 @@ body.cinematic-ui::before{content:"";position:fixed;inset:0;z-index:-1;backgroun
   .scene-artwork{height:210px;margin:-15px -15px 16px}
 }
 @media(max-width:390px){.quickbar small{display:none}.quickbar span{font-size:1.12rem}}
+
+
+/* V5.2 — composition mobile sans chevauchement */
+.story-sidebar.integrated{position:relative;top:auto;z-index:3;margin:-29px 0 17px;padding:10px 12px;border-radius:15px;background:linear-gradient(110deg,rgba(18,14,19,.97),rgba(31,22,25,.97));box-shadow:0 10px 24px rgba(0,0,0,.48)}
+.story-sidebar.integrated .eyebrow,.story-sidebar.integrated h3,.story-sidebar.integrated .sidebar-tip{display:none}
+.story-sidebar.integrated .stats{grid-template-columns:repeat(4,1fr);gap:5px}.story-sidebar.integrated .stat{padding:7px 3px;border-radius:10px}.story-sidebar.integrated .stat b{font-size:1rem}.story-sidebar.integrated .stat span{font-size:.68rem}
+.scene-artwork.load-error{background:linear-gradient(145deg,#13182a,#37212a);display:grid;place-items:center}.scene-artwork.load-error::before{content:"✦  VEYRE";color:rgba(230,184,94,.45);font-family:Georgia,serif;letter-spacing:.3em;font-size:1.1rem}
+@media(max-width:759px){#adventure .grid{display:block;margin-top:10px}#adventure .story-stage{margin-top:0}.story-sidebar.integrated{order:initial}.scene-artwork{height:220px}}
