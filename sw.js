@@ -1,5 +1,5 @@
-const CACHE='lautrec-rpg-v7';
-const ASSETS=['./','./index.html','./styles.css?v=7','./v4.css?v=7','./v5.css?v=7','./explore.css?v=7','./action-v6.css?v=7','./detective-game.css?v=7','./app.js?v=7','./v4.js?v=7','./v5.js?v=7','./explore.js?v=7','./action-v6.js?v=7','./detective-game.js?v=7','./manifest.webmanifest','./assets/icon.svg','./assets/hero.svg','./assets/map.svg','./assets/veyre-night.svg','./assets/story/awakening.webp','./assets/story/tunnels.webp','./assets/story/mirror.webp'];
+const CACHE='lautrec-rpg-v7-1';
+const ASSETS=['./','./index.html','./styles.css?v=7.1','./v4.css?v=7.1','./v5.css?v=7.1','./explore.css?v=7.1','./action-v6.css?v=7.1','./detective-game.css?v=7.1','./app.js?v=7.1','./v4.js?v=7.1','./v5.js?v=7.1','./explore.js?v=7.1','./action-v6.js?v=7.1','./detective-game.js?v=7.1','./manifest.webmanifest','./assets/icon.svg','./assets/hero.svg','./assets/map.svg','./assets/veyre-night.svg','./assets/story/awakening.webp','./assets/story/tunnels.webp','./assets/story/mirror.webp'];
 
 self.addEventListener('install',event=>{
   self.skipWaiting();
