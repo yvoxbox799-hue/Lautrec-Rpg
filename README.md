@@ -1,6 +1,19 @@
-# Lautrec — Les Mémoires de l’Ombre V7 RPG
+# Lautrec — Les Mémoires de l’Ombre V8 RPG
 
 PWA iPhone jouable hors ligne après la première ouverture.
+
+## Nouveautés V8 — Édition aboutie
+- Écran-titre cinématique
+- Deux nouvelles zones illustrées : Archives royales et Cloche noire
+- Six zones d'enquête reliées
+- Déplacement automatique en touchant un personnage ou un indice
+- Nouvelle chaîne de preuves et nouveaux dialogues
+- Plusieurs décisions finales autour de la Cloche noire
+- Ambiance sonore générée localement et bouton son
+- Indicateur de sauvegarde automatique
+- Accomplissements
+- Effets cinéma, pluie, lumière et personnages animés
+- Progression V7 conservée
 
 ## Nouveautés V7 — Enquête cinématique
 - Vue latérale cinématique dans des décors illustrés
