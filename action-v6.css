@@ -1,0 +1,8 @@
+/* Résultat lisible du bouton Agir */
+.action-feedback.explained{display:block;padding:15px;margin-top:11px;border-radius:16px;text-align:left}
+.action-feedback.explained header{display:flex;align-items:center;gap:11px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.12)}
+.action-feedback.explained header>div{display:grid;gap:1px}.action-feedback.explained header small{font-size:.58rem;letter-spacing:.16em;opacity:.75}.action-feedback.explained header strong{font:1.35rem Georgia,serif}
+.result-mark{width:38px!important;height:38px!important;flex:0 0 38px;font-size:1.3rem}.attempt,.consequence{margin:11px 0 0!important;font-weight:400!important;line-height:1.45!important}.attempt b,.consequence b{color:#f1d694}
+.roll-explained{display:grid;grid-template-columns:1fr auto 1.3fr auto 1fr;gap:6px;align-items:center;margin-top:12px;padding:10px;border-radius:12px;background:rgba(5,6,10,.45);text-align:center}.roll-explained span{display:grid;font-size:.68rem;color:#b9afb0}.roll-explained span b{font-size:1.12rem;color:#f3e5c8}.roll-explained i{font-style:normal;color:#a89a91}.roll-explained em{grid-column:1/-1;margin-top:3px;padding-top:6px;border-top:1px solid rgba(255,255,255,.1);font-style:normal;font-size:.7rem;color:#c7b9ad}
+.state-change{display:inline-block;margin:10px 0 0!important;padding:5px 9px;border-radius:99px;background:rgba(255,255,255,.09);font-size:.72rem;font-weight:800!important}.resolving{display:flex;align-items:center;gap:10px}.resolving span{animation:pulseAction .7s infinite alternate}
+@media(max-width:420px){.roll-explained{gap:3px;padding:8px 5px}.roll-explained span{font-size:.58rem}.action-feedback.explained{padding:12px}.action-feedback.explained header strong{font-size:1.18rem}}
