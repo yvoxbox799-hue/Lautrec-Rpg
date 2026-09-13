@@ -16,3 +16,13 @@
 .story-sidebar{align-self:start;position:sticky;top:76px}.sidebar-tip{margin:14px 2px 0;color:var(--muted);font-size:.86rem;line-height:1.45}
 @media(max-width:759px){.story-sidebar{position:static;order:-1}.dice-stage{grid-template-columns:1fr auto;padding:15px;gap:10px}.dice-button .dice{width:88px;height:88px;font-size:2.5rem}.dice-button small{font-size:.58rem}.dice-stage h3{font-size:1.08rem}.dice-result{font-size:.88rem}.story-sidebar .stats{grid-template-columns:repeat(4,1fr)}.sidebar-tip{display:none}}
 @media(max-width:380px){.dice-stage{grid-template-columns:1fr}.dice-button{grid-template-columns:auto auto;align-items:center;justify-content:start}.dice-button .dice{width:76px;height:76px}.dice-button small{white-space:normal;text-align:left}}
+
+/* V4.3 — confirmation des actions libres */
+.action-feedback{display:none;margin:10px 0 4px;padding:12px 14px;border-radius:14px;grid-template-columns:28px 1fr;gap:9px;align-items:center;border:1px solid transparent;animation:feedbackIn .25s ease-out}
+.action-feedback.show{display:grid}.action-feedback span{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;font-weight:900}.action-feedback p{margin:0;line-height:1.35;font-weight:700}
+.action-feedback.good{background:rgba(111,165,123,.13);border-color:rgba(111,165,123,.38);color:#b9dfc1}.action-feedback.good span{background:var(--ok);color:#0d1b10}
+.action-feedback.bad{background:rgba(188,78,87,.14);border-color:rgba(188,78,87,.4);color:#efb4b9}.action-feedback.bad span{background:var(--danger);color:white}
+.action-feedback.pending{background:rgba(217,181,107,.12);border-color:rgba(217,181,107,.32);color:var(--gold)}.action-feedback.pending span{animation:pulseAction .7s infinite alternate}
+#actBtn{min-width:105px;transition:transform .15s,filter .15s,opacity .15s}#actBtn.acting{filter:saturate(.7);opacity:.82}#actBtn:disabled{cursor:wait}
+.input-alert{animation:inputAlert .28s ease-in-out}
+@keyframes feedbackIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}@keyframes pulseAction{to{transform:scale(1.25);opacity:.6}}@keyframes inputAlert{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
