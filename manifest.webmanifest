@@ -3,7 +3,7 @@
   "short_name": "Lautrec",
   "description": "RPG d'enquête 2D-HD dans la ville de Veyre.",
   "lang": "fr",
-  "start_url": "./index-v9.html?v=10",
+  "start_url": "./index-v9.html?v=11",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#08080d",
