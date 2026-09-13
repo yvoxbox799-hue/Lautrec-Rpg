@@ -3,8 +3,8 @@
   "short_name": "Lautrec RPG",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0f0b0e",
-  "theme_color": "#34131b",
+  "background_color": "#08080b",
+  "theme_color": "#0b0c13",
   "description": "RPG narratif PWA autour de Lautrec.",
   "icons": [
     {
