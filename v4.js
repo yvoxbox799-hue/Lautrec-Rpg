@@ -207,6 +207,12 @@
   choose = ch => { tone(300, 0.045); haptic(); originalChoose(ch); };
   const originalRender = render;
   render = () => {
+    state.version = 4;
+    state.flags ||= {};
+    state.settings ||= { largeText: false };
+    if (!state.quests.some(q => q.id === "q4")) {
+      state.quests.push({ id: "q4", title: "La Cloche noire", desc: "Découvrir pourquoi une cloche invisible appelle Lautrec par son vrai nom.", done: false, main: true });
+    }
     originalRender();
     createControls();
     document.body.classList.toggle("large-text", !!state.settings?.largeText);
