@@ -1,37 +1,5 @@
-const CACHE='lautrec-rpg-v8-2';
-
-self.addEventListener('install',event=>{
-  self.skipWaiting();
-});
-
-self.addEventListener('activate',event=>{
-  event.waitUntil(
-    caches.keys()
-      .then(keys=>Promise.all(keys.map(key=>caches.delete(key))))
-      .then(()=>self.clients.claim())
-  );
-});
-
-self.addEventListener('fetch',event=>{
-  if(event.request.method!=='GET')return;
-  event.respondWith(
-    fetch(event.request)
-      .then(response=>{
-        if(response&&response.ok){
-          const copy=response.clone();
-          caches.open(CACHE).then(cache=>cache.put(event.request,copy)).catch(()=>{});
-        }
-        return response;
-      })
-      .catch(async()=>{
-        const cached=await caches.match(event.request);
-        if(cached)return cached;
-        if(event.request.mode==='navigate'){
-          const home=await caches.match('./index.html');
-          if(home)return home;
-          return new Response('<!doctype html><meta charset="utf-8"><title>Lautrec</title><style>body{background:#08080b;color:#eadfc7;font:18px system-ui;padding:30px}button{padding:12px}</style><h1>Connexion nécessaire</h1><p>Reconnecte-toi à Internet puis recharge Lautrec RPG.</p><button onclick="location.reload()">Réessayer</button>',{headers:{'Content-Type':'text/html; charset=utf-8'}});
-        }
-        return new Response('',{status:503,statusText:'Offline'});
-      })
-  );
-});
+const CACHE='lautrec-rpg-v9';
+const CORE=['./','./index.html','./v9.css?v=9','./v9.js?v=9','./manifest.webmanifest','./assets/icon.svg','./assets/veyre-night.svg','./assets/story/awakening.webp','./assets/story/tunnels.webp','./assets/story/mirror.webp','./assets/story/archives-v8.webp','./assets/story/black-bell-v8.webp'];
+self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(cache=>Promise.allSettled(CORE.map(url=>cache.add(url))))) });
+self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith(fetch(e.request).then(r=>{if(r.ok){const copy=r.clone();caches.open(CACHE).then(c=>c.put(e.request,copy)).catch(()=>{})}return r}).catch(()=>caches.match(e.request).then(r=>r||new Response('Hors ligne',{status:503}))))});
