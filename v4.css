@@ -6,3 +6,13 @@
 .choice:focus-visible,.btn:focus-visible,.tab:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 @media(max-width:520px){.v4-actions{display:grid;grid-template-columns:1fr 1fr}.v4-actions .btn,.v4-actions .file-btn{justify-content:center;text-align:center}.v4-actions .primary{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* V4.1 — le destin au cœur de l'histoire */
+.dice-stage{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:18px;margin:20px 0 10px;padding:18px;border:1px solid rgba(217,181,107,.38);border-radius:20px;background:radial-gradient(circle at 90% 20%,rgba(139,51,66,.42),rgba(17,12,16,.96) 55%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 12px 32px rgba(0,0,0,.28);overflow:hidden}
+.dice-stage::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,transparent 20%,rgba(217,181,107,.06),transparent 70%)}
+.dice-stage h3{margin:.25rem 0;font-size:1.25rem}.dice-result{min-height:2.5em;margin:.35rem 0 0;color:var(--cream);font-weight:750;line-height:1.35}
+.dice-button{position:relative;z-index:1;border:0;background:transparent;color:var(--gold);padding:0;display:grid;justify-items:center;gap:7px;cursor:pointer}.dice-button small{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.dice-button .dice{width:112px;height:112px;font-size:3.1rem;transition:filter .2s,transform .2s}.dice-button:active .dice{transform:scale(.93)}.dice-button:focus-visible{outline:3px solid var(--gold);outline-offset:6px;border-radius:18px}
+.story-sidebar{align-self:start;position:sticky;top:76px}.sidebar-tip{margin:14px 2px 0;color:var(--muted);font-size:.86rem;line-height:1.45}
+@media(max-width:759px){.story-sidebar{position:static;order:-1}.dice-stage{grid-template-columns:1fr auto;padding:15px;gap:10px}.dice-button .dice{width:88px;height:88px;font-size:2.5rem}.dice-button small{font-size:.58rem}.dice-stage h3{font-size:1.08rem}.dice-result{font-size:.88rem}.story-sidebar .stats{grid-template-columns:repeat(4,1fr)}.sidebar-tip{display:none}}
+@media(max-width:380px){.dice-stage{grid-template-columns:1fr}.dice-button{grid-template-columns:auto auto;align-items:center;justify-content:start}.dice-button .dice{width:76px;height:76px}.dice-button small{white-space:normal;text-align:left}}
