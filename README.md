@@ -1,6 +1,17 @@
-# Lautrec — Les Mémoires de l’Ombre V4 RPG
+# Lautrec — Les Mémoires de l’Ombre V6 RPG
 
 PWA iPhone jouable hors ligne après la première ouverture.
+
+## Nouveautés V6 — Mode jeu vidéo
+- Exploration libre au stick tactile ou au clavier
+- Quatre zones jouables : chambre, rues, souterrains et miroir
+- Collisions, portes et passages entre les zones
+- Personnages et objets interactifs
+- Coffres et caches qui donnent de l’or et de l’XP
+- Dialogues intégrés pendant l’exploration
+- Rencontre de boss reliée au système de combat
+- Position et découvertes sauvegardées automatiquement
+- Bouton « Explorer Veyre » depuis l’accueil et l’histoire
 
 ## Nouveautés V5
 - Refonte graphique cinématique HD-2D originale
