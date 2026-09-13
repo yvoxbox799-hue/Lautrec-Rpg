@@ -233,6 +233,18 @@
 
 /* V4.3 — retour immédiat du bouton Agir */
 (() => {
+  const haptic = ms => { if (navigator.vibrate) navigator.vibrate(ms); };
+  const tone = (frequency, duration) => {
+    if (localStorage.getItem("lautrec_audio") === "off" || !(window.AudioContext || window.webkitAudioContext)) return;
+    const context = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = context.createOscillator();
+    const gain = context.createGain();
+    oscillator.frequency.value = frequency;
+    gain.gain.setValueAtTime(0.025, context.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, context.currentTime + duration);
+    oscillator.connect(gain).connect(context.destination);
+    oscillator.start(); oscillator.stop(context.currentTime + duration);
+  };
   const box = document.querySelector(".actionbox");
   const button = document.getElementById("actBtn");
   const input = document.getElementById("freeAction");
