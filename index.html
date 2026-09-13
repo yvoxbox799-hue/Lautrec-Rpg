@@ -1,50 +1,14 @@
 <!doctype html><html lang="fr"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#34131b"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="assets/icon.svg">
-<link rel="stylesheet" href="styles.css?v=8.1"><link rel="stylesheet" href="v4.css?v=8.1"><link rel="stylesheet" href="v5.css?v=8.1"><link rel="stylesheet" href="explore.css?v=8.1"><link rel="stylesheet" href="action-v6.css?v=8.1"><link rel="stylesheet" href="detective-game.css?v=8.1"><title>Lautrec — Les Mémoires de l’Ombre</title></head><body>
-<header class="topbar"><div class="brand"><img src="assets/icon.svg" alt=""><span>LAUTREC</span></div><div class="pill" id="topStatus">Niv. 1 • 0 XP</div></header>
-<main>
-<section id="home" class="screen active">
-<div class="hero"><img src="assets/hero.svg" alt=""><div class="hero-copy"><div class="eyebrow">V8 RPG • Les Mémoires de l’Ombre</div><h1>Les Mémoires<br>de l’Ombre</h1><p>Chaque décision laisse une trace. Chaque allié peut partir. Chaque ennemi peut se souvenir.</p><div class="cta"><button class="btn primary" id="continueBtn">Continuer</button><button class="btn ghost" id="newBtn">Nouvelle chronologie</button></div></div></div>
-<div class="grid"><div class="card span4"><h3>Campagne</h3><p id="homeLast" class="muted"></p></div><div class="card span4"><h3>État du monde</h3><p id="worldState" class="muted"></p></div><div class="card span4"><h3>Compagnons</h3><p id="homeComp" class="muted"></p></div></div>
-</section>
-
-<section id="adventure" class="screen"><div class="grid">
-<div class="card span8"><div class="eyebrow" id="chapterLabel"></div><h2 id="sceneTitle"></h2><div id="storyText" class="story"></div><div id="moralBox"></div><section class="dice-stage" aria-label="Lancer de dés"><div class="dice-copy"><div class="eyebrow">Le destin décide</div><h3>Jet de compétence</h3><p id="diceText" class="dice-result" aria-live="polite"></p></div><button class="dice-button" id="rollBtn" aria-label="Lancer un dé à vingt faces"><span id="dice" class="dice">20</span><small>Toucher pour lancer</small></button></section><div id="choices" class="choices"></div><div class="actionbox"><textarea id="freeAction" placeholder="Ex. « observer les gardes », « voler la clé », « agir au hasard », « demander conseil à Mira »…"></textarea><button class="btn gold" id="actBtn">Agir</button></div></div>
-<div class="card span4 story-sidebar"><div class="eyebrow">État de Lautrec</div><h3>Fiche rapide</h3><div class="stats"><div class="stat"><b id="hpStat">24</b><span>PV</span></div><div class="stat"><b id="xpStat">0</b><span>XP</span></div><div class="stat"><b id="goldStat">18</b><span>Or</span></div><div class="stat"><b id="repStat">0</b><span>Rép.</span></div></div><p class="sidebar-tip">Les jets liés à tes décisions apparaissent maintenant directement dans l’histoire.</p></div>
-<div class="card span12"><h3>Chronique récente</h3><div class="log" id="log"></div></div>
-</div></section>
-
-<section id="combat" class="screen"><div class="grid">
-<div class="card span7"><div class="eyebrow">Combat tactique</div><h2 id="combatTitle">Aucun combat</h2><div id="combatArea"></div></div>
-<div class="card span5"><h2>Groupe</h2><div id="partyCombat"></div><h3>Actions</h3><div id="combatActions" class="choices"></div></div>
-</div></section>
-
-<section id="map" class="screen"><div class="card"><div class="eyebrow">Veyre</div><h2>Carte des ombres</h2><img class="map" src="assets/map.svg" alt=""><div id="locations"></div></div></section>
-
-<section id="character" class="screen"><div class="grid">
-<div class="card span6"><div class="eyebrow">Humain • Voleur</div><h2>Lautrec</h2><div id="charStats"></div></div>
-<div class="card span6"><h2>Équipement</h2><div id="equipment"></div><h3>Inventaire</h3><div id="inventory"></div></div>
-<div class="card span6"><h2>Compagnons</h2><div id="companions"></div></div>
-<div class="card span6"><h2>Relations & factions</h2><div id="relations"></div></div>
-<div class="card span12"><h2>Talents & blessures</h2><div class="two"><div id="talents"></div><div id="injuries"></div></div></div>
-</div></section>
-
-<section id="world" class="screen"><div class="grid">
-<div class="card span6"><h2>Quêtes</h2><div id="questList"></div></div>
-<div class="card span6"><h2>Marchand</h2><div id="shop"></div></div>
-<div class="card span6"><h2>Secrets</h2><div id="secretList"></div></div>
-<div class="card span6"><h2>Événements du monde</h2><div id="worldEvents"></div></div>
-<div class="card span12"><h2>Journal</h2><div class="log" id="journal"></div></div>
-</div></section>
-</main>
-
-<nav class="tabs">
-<button class="tab active" data-screen="home"><span>⌂</span>Accueil</button>
-<button class="tab" data-screen="adventure"><span>✦</span>Aventure</button>
-<button class="tab" data-screen="combat"><span>⚔</span>Combat</button>
-<button class="tab" data-screen="map"><span>⌖</span>Carte</button>
-<button class="tab" data-screen="character"><span>♟</span>Groupe</button>
-<button class="tab" data-screen="world"><span>☷</span>Monde</button>
-</nav>
-<div id="toast" class="toast"></div><script src="app.js?v=8.1"></script><script src="v4.js?v=8.1"></script><script src="v5.js?v=8.1"></script><script src="explore.js?v=8.1"></script><script src="action-v6.js?v=8.1"></script><script src="detective-game.js?v=8.1"></script></body></html>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#08080d"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="assets/icon.svg">
+<link rel="stylesheet" href="v9.css?v=9"><title>Lautrec RPG V9</title></head><body>
+<div id="title" class="screen on"><div class="titlebox"><img src="assets/icon.svg" alt=""><small>LES MÉMOIRES DE L'OMBRE</small><h1>LAUTREC</h1><p>Un RPG d'enquête dans la ville qui se souvient.</p><button id="play">CONTINUER</button><button id="restart">Nouvelle chronologie</button><em>VERSION 9 · RPG EDITION</em></div></div>
+<div id="game" class="screen"><header><div><small id="chapter">CHAPITRE I</small><h2 id="zone">La chambre</h2></div><p>♥ <b id="hp"></b>　◆ <b id="gold"></b></p><button id="heroMenu">☰</button></header>
+<div class="objective"><b>OBJECTIF</b><span id="objective"></span></div>
+<main id="world"><div id="background"></div><div class="light"></div><div id="objects"></div><div id="player"><i></i><b></b><em></em></div><div id="prompt"></div><div id="reveal"></div></main>
+<div class="controls"><button id="left">◀</button><span>TOUCHE UN ÉLÉMENT<br>OU DÉPLACE LAUTREC</span><button id="right">▶</button><button id="act">✦<br>AGIR</button></div>
+<nav><button data-menu="hero">♟<span>Héros</span></button><button data-menu="bag">◇<span>Sac</span><b id="bagN"></b></button><button data-menu="quests">✦<span>Quêtes</span></button><button data-menu="journal">▤<span>Journal</span></button><button id="save">◆<span>Sauver</span></button></nav></div>
+<div id="dialogue" class="overlay"><div id="portrait">♟</div><article><small id="speaker"></small><p id="speech"></p><div id="answers"></div></article></div>
+<div id="battle" class="overlay"><section><small>COMBAT AU TOUR PAR TOUR</small><h2 id="enemyName"></h2><div id="enemy">♞</div><label>ENNEMI <span id="enemyHp"></span><i><b id="enemyBar"></b></i></label><label>LAUTREC <span id="playerHp"></span><i><b id="playerBar"></b></i></label><p id="battleLog"></p><div id="battleButtons"></div></section></div>
+<div id="menu"><section><header><div><small>MENU</small><h2 id="menuTitle"></h2></div><button id="menuClose">×</button></header><div id="menuBody"></div></section></div><div id="toast"></div>
+<script src="v9.js?v=9"></script></body></html>
