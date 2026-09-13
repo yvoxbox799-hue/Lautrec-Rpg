@@ -1,8 +1,18 @@
-# Lautrec — Les Mémoires de l’Ombre V3 RPG
+# Lautrec — Les Mémoires de l’Ombre V4 RPG
 
 PWA iPhone jouable hors ligne après la première ouverture.
 
-## Nouveautés V3
+## Nouveautés V4
+- Nouveau chapitre complet : La Cloche noire
+- Nouvelle rencontre et recrutement de Valeria
+- Nouveau combat de boss et trois conclusions morales
+- Export/import de la sauvegarde en JSON
+- Camp pour soigner Lautrec et ses compagnons
+- Mode texte agrandi, retour sonore discret et vibrations
+- Interface mobile et accessibilité améliorées
+- Migration automatique des sauvegardes V3
+
+## Contenu hérité de la V3
 - Campagne principale multi-chapitres
 - Mode monde ouvert après le premier grand arc
 - Actions libres interprétées localement
