@@ -11,7 +11,14 @@
       {id:"mira",x:35,icon:"♟",name:"Mira",kind:"npc"},
       {id:"witness",x:60,icon:"♙",name:"Vieil horloger",kind:"npc"},
       {id:"inscription",x:76,icon:"◇",name:"Inscription",kind:"clue"},
+      {id:"archive-door",x:86,icon:"▥",name:"Archives royales",kind:"exit",to:"archives",at:7},
       {id:"gate",x:93,icon:"▥",name:"Passage souterrain",kind:"exit",to:"tunnels",at:8}
+    ]},
+    archives:{name:"Les Archives royales",image:"assets/story/archives-v8.webp",spawn:7,goal:"Retrouve le registre des quatre signatures.",actors:[
+      {id:"archivist",x:30,icon:"♜",name:"Archiviste Sorel",kind:"npc"},
+      {id:"ledger",x:57,icon:"◇",name:"Registre scellé",kind:"clue"},
+      {id:"cabinet",x:82,icon:"⚿",name:"Cabinet enchaîné",kind:"clue"},
+      {id:"back-archives",x:3,icon:"‹",name:"Retourner dans les rues",kind:"exit",to:"street",at:82}
     ]},
     tunnels:{name:"Les quatre portes",image:"assets/story/tunnels.webp",spawn:8,goal:"Découvre qui a ouvert la quatrième porte.",actors:[
       {id:"tracks",x:28,icon:"◇",name:"Empreintes",kind:"clue"},
@@ -21,10 +28,16 @@
     ]},
     mirror:{name:"Le miroir impossible",image:"assets/story/mirror.webp",spawn:8,goal:"Obtiens la vérité du quatrième Lautrec.",actors:[
       {id:"reflection",x:68,icon:"♛",name:"Le Reflet",kind:"npc"},
+      {id:"bell-gate",x:92,icon:"▥",name:"Salle de la Cloche",kind:"exit",to:"bell",at:8},
       {id:"back-tunnels",x:3,icon:"‹",name:"Revenir aux portes",kind:"exit",to:"tunnels",at:82}
+    ]},
+    bell:{name:"La Cloche noire",image:"assets/story/black-bell-v8.webp",spawn:8,goal:"Décide quels souvenirs Veyre doit conserver.",actors:[
+      {id:"bell-memory",x:48,icon:"◇",name:"Échos de la cloche",kind:"clue"},
+      {id:"bell-heart",x:78,icon:"♛",name:"Mécanisme central",kind:"npc"},
+      {id:"back-mirror",x:3,icon:"‹",name:"Retourner au miroir",kind:"exit",to:"mirror",at:86}
     ]}
   };
-  const clueNames={note:"Le billet impossible",key:"La clé noire IV",inscription:"Le message du mur",tracks:"Les empreintes de Lautrec",clock:"L'heure effacée",mask:"Le sceau de la Guilde"};
+  const clueNames={note:"Le billet impossible",key:"La clé noire IV",inscription:"Le message du mur",tracks:"Les empreintes de Lautrec",clock:"L'heure effacée",mask:"Le sceau de la Guilde",ledger:"Les quatre signatures",cabinet:"Le dossier royal",origin:"L'origine du Reflet",truth:"La mémoire rejetée",bell:"Les noms oubliés"};
 
   function ensure(){
     state.detective ||= {zone:"room",x:16,clues:[],trust:{Mira:0,Horloger:0,Masque:0,Reflet:0},visited:[],objective:"Trouve ce que cache la chambre."};
@@ -63,7 +76,7 @@
 
   const stage=document.getElementById("sideStage"),sprite=document.getElementById("lautrecSprite"),actorsEl=document.getElementById("actors");
   const dialogue=document.getElementById("dialogueScene"),prompt=document.getElementById("nearPrompt");
-  let held=0,raf=0,last=0,near=null,playing=false;
+  let held=0,raf=0,last=0,near=null,playing=false,walkTarget=null;
 
   function zone(){return zones[state.detective.zone]||zones.room}
   function has(id){return state.detective.clues.includes(id)}
@@ -80,7 +93,7 @@
   function renderZone(){
     const z=zone();stage.style.setProperty("--scene-image",`url("${z.image}")`);
     actorsEl.innerHTML=z.actors.map(a=>`<button class="world-actor ${a.kind}" data-id="${a.id}" style="left:${a.x}%"><i>${a.icon}</i><b>${a.name}</b>${a.kind==="clue"&&has(a.id)?'<em>✓ TROUVÉ</em>':""}</button>`).join("");
-    actorsEl.querySelectorAll(".world-actor").forEach(el=>el.onclick=()=>{const a=z.actors.find(x=>x.id===el.dataset.id);if(Math.abs(a.x-state.detective.x)<13)interact(a)});
+    actorsEl.querySelectorAll(".world-actor").forEach(el=>el.onclick=()=>{const a=z.actors.find(x=>x.id===el.dataset.id);if(Math.abs(a.x-state.detective.x)<13)interact(a);else walkTarget=a});
     sprite.style.left=state.detective.x+"%";renderHud();updateNear();
   }
   function updateNear(){
@@ -90,6 +103,7 @@
   }
   function frame(t){
     if(!playing)return;const dt=Math.min(.04,(t-last)/1000||0);last=t;
+    if(walkTarget&&!dialogue.classList.contains("show")){const delta=walkTarget.x-state.detective.x;if(Math.abs(delta)<8){const target=walkTarget;walkTarget=null;held=0;interact(target)}else held=Math.sign(delta)}
     if(held&&!dialogue.classList.contains("show")){state.detective.x=Math.max(2,Math.min(96,state.detective.x+held*dt*17));sprite.style.left=state.detective.x+"%";sprite.classList.add("walking");sprite.classList.toggle("left",held<0);stage.style.setProperty("--pan",((state.detective.x-50)*-.08)+"%");updateNear()}else sprite.classList.remove("walking");
     raf=requestAnimationFrame(frame);
   }
@@ -119,6 +133,13 @@
         {text:"Le laisser tranquille",action:closeDialogue}
       ]);
     },
+    archivist(){
+      showDialogue("Archiviste Sorel","« Les registres ne mentent jamais. Ce sont les hommes qui leur arrachent des pages. »",[
+        {text:"Lui montrer le billet impossible",requires:"note",action(){showDialogue("Archiviste Sorel","« Cette encre porte le sceau royal de l'an 742. Tu n'étais pas né… à moins que Lautrec ne soit pas seulement un nom. »",[{text:"Demander le registre scellé",action(){addClue("ledger","Examine le cabinet enchaîné.");showDialogue("Archiviste Sorel","Quatre signatures identiques apparaissent au même jour, espacées de vingt-cinq ans.",[{text:"Noter la preuve",action:closeDialogue}])}},{text:"Rester prudent",action:closeDialogue}])}},
+        {text:"Parler de l'heure effacée",requires:"clock",action(){addClue("cabinet","Confronte le Reflet avec le dossier royal.");showDialogue("Archiviste Sorel","Il ouvre le cabinet. Un décret ordonne d'effacer de Veyre tous les souvenirs liés à Lautrec.",[{text:"Prendre une copie",action:closeDialogue}])}},
+        {text:"Quitter les Archives",action:closeDialogue}
+      ]);
+    },
     mask(){
       showDialogue("Inconnu masqué","« Sujet IV confirmé. Tu aurais dû oublier cette nuit comme les autres. »",[
         {text:"Lui montrer le sceau décrit par l'horloger",requires:"mask",action(){state.detective.trust.Masque+=2;showDialogue("Inconnu masqué","Il baisse son arme. « Le quatrième n'est pas ton double. C'est le premier Lautrec, celui qui refuse de mourir. »",[{text:"Qui l'a enfermé ?",action(){addClue("origin","Franchis la porte IV et confronte le Reflet.");showDialogue("Inconnu masqué","« Toi. Dans une vie dont tu as demandé l'effacement. »",[{text:"Aller jusqu'au bout",action:closeDialogue}])}},{text:"Je n'en crois rien",action:closeDialogue}])}},
@@ -132,6 +153,14 @@
         {text:"Observer avant de répondre",action(){const r=roll("perception",15);showDialogue("Lautrec",r.ok?"Le reflet évite de regarder la clé. Il la craint.":"Le miroir brouille chaque détail important.",[{text:"Continuer",action:closeDialogue}])}},
         {text:"Quitter le miroir",action:closeDialogue}
       ]);
+    },
+    "bell-heart"(){
+      showDialogue("La Cloche","Des milliers de voix parlent ensemble : « Un nom pour une mémoire. Une mémoire pour une vie. Choisis. »",[
+        {text:"Libérer tous les souvenirs de Veyre",requires:"truth",action(){state.morality+=2;state.rep+=5;addXP(80);complete("q4");state.detective.objective="Veyre se souvient de ses disparus.";showDialogue("Lautrec","La cloche se fend. Les noms oubliés reviennent dans toute la ville.",[{text:"Continuer le voyage",action:closeDialogue}])}},
+        {text:"Effacer le premier Lautrec",requires:"origin",action(){state.morality-=1;addXP(90);complete("q4");state.detective.objective="Le premier Lautrec a disparu des mémoires.";showDialogue("Lautrec","Le Reflet disparaît, mais Mira te regarde désormais comme un inconnu.",[{text:"Accepter le prix",action:closeDialogue}])}},
+        {text:"Prendre le contrôle de la cloche",requires:"bell",action(){state.morality-=2;state.rep+=8;addXP(100);complete("q4");state.detective.objective="Lautrec règne sur les souvenirs de Veyre.";showDialogue("Lautrec","La cloche reconnaît son nouveau maître.",[{text:"Régner dans l'ombre",action:closeDialogue}])}},
+        {text:"Ne pas choisir maintenant",action:closeDialogue}
+      ]);
     }
   };
   function interact(a=near){
@@ -140,10 +169,14 @@
     else if(a.id==="key")investigate("key","Clé noire IV","La clé est tiède. Quand tu la touches, quatre silhouettes traversent ta mémoire.","Sors de la chambre et retrouve la femme au manteau gris.");
     else if(a.id==="inscription")investigate("inscription","Inscription","Sous la suie : « Lautrec ment lorsqu'il dit qu'il ne se souvient pas. »","Interroge les habitants au sujet du quatrième Lautrec.");
     else if(a.id==="tracks")investigate("tracks","Empreintes","Ces empreintes sont exactement les tiennes, jusque dans l'usure du talon gauche.","Interroge l'inconnu masqué.");
+    else if(a.id==="ledger")investigate("ledger","Registre scellé","Quatre Lautrec ont signé cette page avec la même main, à vingt-cinq ans d'intervalle.","Interroge l'archiviste au sujet du registre.");
+    else if(a.id==="cabinet")investigate("cabinet","Cabinet royal","La chaîne porte le symbole de la clé IV. Derrière elle se trouve le décret d'effacement.","Retrouve l'origine du Reflet.");
+    else if(a.id==="bell-memory")investigate("bell","Échos de la cloche","Chaque vibration prononce le nom d'une personne que Veyre a oubliée.","Utilise les preuves pour décider du sort de la cloche.");
   }
   function travel(a){
     if(a.id==="gate"&&!has("clock"))return showDialogue("Lautrec","Descendre maintenant serait avancer à l'aveugle. Mira ou l'horloger sait quelque chose.",[{text:"Continuer l'enquête",action:closeDialogue}]);
     if(a.id==="door-four"&&!has("origin"))return showDialogue("Lautrec","La porte IV ne réagit pas. L'inconnu masqué connaît probablement son secret.",[{text:"L'interroger",action:closeDialogue}]);
+    if(a.id==="bell-gate"&&!has("truth"))return showDialogue("Lautrec","La salle de la Cloche refuse de s'ouvrir. Le Reflet détient encore une vérité essentielle.",[{text:"Confronter le Reflet",action:closeDialogue}]);
     state.detective.zone=a.to;state.detective.x=a.at;state.detective.objective=zones[a.to].goal;if(!state.detective.visited.includes(a.to)){state.detective.visited.push(a.to);addXP(5)}save();renderZone();
   }
   function openBook(){
