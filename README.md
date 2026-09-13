@@ -2,6 +2,12 @@
 
 PWA iPhone jouable hors ligne après la première ouverture.
 
+## Nouveautés V4.1
+- Zone de lancer de dés déplacée au cœur de la page Histoire
+- Dé agrandi, résultat immédiatement lisible et bouton tactile
+- Fiche rapide collante sur grand écran, compacte sur iPhone
+- Accessibilité améliorée avec annonce du résultat
+
 ## Nouveautés V4
 - Nouveau chapitre complet : La Cloche noire
 - Nouvelle rencontre et recrutement de Valeria
