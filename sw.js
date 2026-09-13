@@ -1,5 +1,5 @@
-const CACHE='lautrec-rpg-v5';
-const ASSETS=['./','./index.html','./styles.css?v=5','./v4.css?v=5','./v5.css?v=5','./app.js?v=5','./v4.js?v=5','./v5.js?v=5','./manifest.webmanifest','./assets/icon.svg','./assets/hero.svg','./assets/map.svg','./assets/veyre-night.svg'];
+const CACHE='lautrec-rpg-v5-1';
+const ASSETS=['./','./index.html','./styles.css?v=5.1','./v4.css?v=5.1','./v5.css?v=5.1','./app.js?v=5.1','./v4.js?v=5.1','./v5.js?v=5.1','./manifest.webmanifest','./assets/icon.svg','./assets/hero.svg','./assets/map.svg','./assets/veyre-night.svg','./assets/story/awakening.webp','./assets/story/tunnels.webp','./assets/story/mirror.webp'];
 
 self.addEventListener('install',event=>{
   self.skipWaiting();
