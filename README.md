@@ -2,6 +2,15 @@
 
 PWA iPhone jouable hors ligne après la première ouverture.
 
+## Nouveautés V5
+- Refonte graphique cinématique HD-2D originale
+- Décor nocturne de Veyre avec brume et particules lumineuses
+- Barre de raccourcis persistante : Inventaire, Quêtes, Carte et Groupe
+- Inventaire rapide en tiroir avec équipement immédiat
+- Grand panneau de conséquence pour les réponses à « Agir »
+- Nouvelle présentation des choix, du dé et de la narration
+- Interface optimisée pour l'écran de l'iPhone
+
 ## Nouveautés V4.1
 - Zone de lancer de dés déplacée au cœur de la page Histoire
 - Dé agrandi, résultat immédiatement lisible et bouton tactile
