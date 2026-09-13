@@ -154,6 +154,7 @@
     ensure();document.getElementById("explore")?.classList.remove("active");showScreen("detective");screen.classList.add("active");playing=true;last=performance.now();renderZone();cancelAnimationFrame(raf);raf=requestAnimationFrame(frame);
   }
   function leave(){playing=false;save();showScreen("adventure")}
+  window.startLautrecGame=start;
   ["walkLeft","walkRight"].forEach((id,i)=>{const b=document.getElementById(id),dir=i?-1:1;b.addEventListener("pointerdown",e=>{e.preventDefault();held=dir});["pointerup","pointercancel","pointerleave"].forEach(ev=>b.addEventListener(ev,()=>held=0))});
   addEventListener("keydown",e=>{if(!playing)return;if(e.key==="ArrowLeft")held=-1;if(e.key==="ArrowRight")held=1;if((e.key===" "||e.key==="Enter")&&!dialogue.classList.contains("show"))interact()});
   addEventListener("keyup",e=>{if(e.key==="ArrowLeft"||e.key==="ArrowRight")held=0});
@@ -163,5 +164,13 @@
 
   setTimeout(()=>{
     ["exploreLaunch","homeExploreLaunch"].forEach(id=>{const b=document.getElementById(id);if(b){b.innerHTML="<span>◆</span><b>COMMENCER L'ENQUÊTE</b><small>Explore, interroge et rassemble les preuves</small>";b.onclick=start}});
+    const launch=document.getElementById("exploreLaunch");
+    const stats=document.querySelector("#adventure .story-sidebar.integrated");
+    if(launch&&stats)stats.insertAdjacentElement("afterend",launch);
+    const adventureTab=document.querySelector('.tab[data-screen="adventure"]');
+    if(adventureTab){adventureTab.innerHTML="<span>◆</span>Jouer";adventureTab.onclick=start}
+    const continueButton=document.getElementById("continueBtn");
+    if(continueButton){continueButton.textContent="Jouer";continueButton.onclick=start}
+    if(document.getElementById("adventure")?.classList.contains("active"))start();
   },0);
 })();
