@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900">
+<defs>
+<linearGradient id="sky" x2="0" y2="1"><stop stop-color="#100e16"/><stop offset=".55" stop-color="#32131d"/><stop offset="1" stop-color="#09080b"/></linearGradient>
+<linearGradient id="fog" x2="1"><stop stop-color="#e1d1b4" stop-opacity=".02"/><stop offset=".5" stop-color="#e1d1b4" stop-opacity=".22"/><stop offset="1" stop-color="#e1d1b4" stop-opacity=".02"/></linearGradient>
+</defs>
+<rect width="1400" height="900" fill="url(#sky)"/>
+<circle cx="1050" cy="170" r="100" fill="#d7c9ad" opacity=".32"/>
+<g fill="#0b0a0d">
+<path d="M0 670 L120 520 L220 580 L315 450 L430 580 L540 400 L660 570 L780 420 L900 590 L1040 455 L1170 590 L1300 470 L1400 565 L1400 900 L0 900Z"/>
+<rect x="620" y="320" width="200" height="360"/><polygon points="600,320 720,225 840,320"/>
+<rect x="680" y="475" width="65" height="205" fill="#050507"/>
+</g>
+<path d="M0 650 Q180 590 360 645 T720 635 T1080 645 T1400 625 V900 H0Z" fill="url(#fog)"/>
+<g fill="#07070a">
+<circle cx="335" cy="402" r="68"/>
+<path d="M245 470 Q335 430 425 470 L465 810 H195Z"/>
+<path d="M400 475 L490 640 L462 660 L375 520Z"/>
+<path d="M265 480 L185 650 L160 632 L235 450Z"/>
+</g>
+<path d="M160 815 Q330 745 500 815" fill="none" stroke="#d9b56b" stroke-width="3" opacity=".7"/>
+<text x="75" y="105" fill="#d9b56b" font-family="Georgia,serif" font-size="34" letter-spacing="9">LAUTREC</text>
+<text x="75" y="154" fill="#e9dcc0" font-family="Georgia,serif" font-size="56">LES MÉMOIRES DE L’OMBRE</text>
+</svg>

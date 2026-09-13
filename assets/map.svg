@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820">
+<rect width="1200" height="820" rx="34" fill="#bfa474"/>
+<path d="M45 650 C170 540 310 610 415 500 S590 305 735 390 S965 510 1150 345" fill="none" stroke="#6f5437" stroke-width="24" opacity=".4"/>
+<g fill="#695039" opacity=".44">
+<path d="M110 145 L345 95 L430 260 L240 360 L95 290Z"/>
+<path d="M650 105 L970 120 L1080 320 L825 385 L610 250Z"/>
+<path d="M425 450 L720 420 L820 640 L590 720 L345 635Z"/>
+<path d="M875 500 L1110 480 L1150 700 L930 760 L830 630Z"/>
+</g>
+<g fill="#342720" font-family="Georgia,serif" font-size="30">
+<text x="130" y="205">Quartier Bas</text><text x="715" y="190">Archives</text><text x="465" y="555">Maison sans porte</text><text x="900" y="605">Port noir</text>
+</g>
+<g fill="#6d202b" stroke="#efd9a8" stroke-width="6">
+<circle cx="275" cy="280" r="19"/><circle cx="830" cy="270" r="19"/><circle cx="610" cy="630" r="19"/><circle cx="1000" cy="660" r="19"/>
+</g>
+</svg>
