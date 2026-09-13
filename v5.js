@@ -142,14 +142,23 @@
       figure.innerHTML = '<img alt=""><figcaption><span>◈</span><b></b></figcaption>';
       stage.prepend(figure);
     }
+    const sidebar = document.querySelector("#adventure .story-sidebar");
+    if (sidebar && sidebar.parentElement !== stage) {
+      figure.insertAdjacentElement("afterend", sidebar);
+      sidebar.classList.add("integrated");
+    }
     const image = figure.querySelector("img");
     if (image.getAttribute("src") !== art[0]) {
       figure.classList.remove("revealed");
       image.src = art[0];
       image.alt = art[1];
       figure.querySelector("b").textContent = art[1];
-      image.onload = () => figure.classList.add("revealed");
-      if (image.complete) figure.classList.add("revealed");
+      image.onload = () => { figure.classList.add("revealed"); figure.classList.remove("load-error"); };
+      image.onerror = () => {
+        figure.classList.add("load-error");
+        figure.querySelector("b").textContent = "Illustration en cours de chargement…";
+      };
+      if (image.complete && image.naturalWidth) figure.classList.add("revealed");
     }
   }
 
