@@ -109,12 +109,57 @@
     if (questCount) questCount.textContent = state.quests.filter(q => !q.done).length;
   }
 
+  const sceneArtwork = {
+    awakening: ["assets/story/awakening.webp", "La chambre du réveil à Veyre"],
+    room: ["assets/story/awakening.webp", "La clé noire marquée IV"],
+    key: ["assets/story/awakening.webp", "La chambre et la clé noire"],
+    visitor: ["assets/story/awakening.webp", "Une silhouette derrière la porte"],
+    mira: ["assets/story/awakening.webp", "La rencontre avec Mira"],
+    recruitMira: ["assets/story/awakening.webp", "L'alliance avec Mira"],
+    tunnels: ["assets/story/tunnels.webp", "Les quatre portes sous Veyre"],
+    ambush: ["assets/story/tunnels.webp", "L'embuscade des souterrains"],
+    guild: ["assets/story/tunnels.webp", "Les profondeurs de Veyre"],
+    bellVault: ["assets/story/tunnels.webp", "Le gardien de la cloche noire"],
+    mirror: ["assets/story/mirror.webp", "Le reflet du quatrième Lautrec"],
+    mirrorTalk: ["assets/story/mirror.webp", "Le quatrième Lautrec dans le miroir"],
+    finalChoice: ["assets/story/mirror.webp", "Le choix face au quatrième Lautrec"],
+    escapeEnding: ["assets/story/mirror.webp", "Le reflet qui attend"],
+    bellChoice: ["assets/story/mirror.webp", "Le choix devant la cloche noire"]
+  };
+
+  function refreshSceneArtwork() {
+    const stage = document.querySelector("#adventure .story-stage");
+    if (!stage) return;
+    let figure = stage.querySelector(".scene-artwork");
+    const art = sceneArtwork[state.scene];
+    if (!art) {
+      if (figure) figure.remove();
+      return;
+    }
+    if (!figure) {
+      figure = document.createElement("figure");
+      figure.className = "scene-artwork";
+      figure.innerHTML = '<img alt=""><figcaption><span>◈</span><b></b></figcaption>';
+      stage.prepend(figure);
+    }
+    const image = figure.querySelector("img");
+    if (image.getAttribute("src") !== art[0]) {
+      figure.classList.remove("revealed");
+      image.src = art[0];
+      image.alt = art[1];
+      figure.querySelector("b").textContent = art[1];
+      image.onload = () => figure.classList.add("revealed");
+      if (image.complete) figure.classList.add("revealed");
+    }
+  }
+
   const previousRender = render;
   render = () => {
     previousRender();
     refreshQuickbar();
     const adventureCard = document.querySelector("#adventure .card.span8");
     if (adventureCard) adventureCard.classList.add("story-stage");
+    refreshSceneArtwork();
   };
 
   const feedback = document.getElementById("actionFeedback");
