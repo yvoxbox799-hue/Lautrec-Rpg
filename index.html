@@ -1,0 +1,50 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#34131b"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="assets/icon.svg">
+<link rel="stylesheet" href="styles.css"><title>Lautrec — Les Mémoires de l’Ombre</title></head><body>
+<header class="topbar"><div class="brand"><img src="assets/icon.svg" alt=""><span>LAUTREC</span></div><div class="pill" id="topStatus">Niv. 1 • 0 XP</div></header>
+<main>
+<section id="home" class="screen active">
+<div class="hero"><img src="assets/hero.svg" alt=""><div class="hero-copy"><div class="eyebrow">V3 RPG • Campagne évolutive</div><h1>Les Mémoires<br>de l’Ombre</h1><p>Chaque décision laisse une trace. Chaque allié peut partir. Chaque ennemi peut se souvenir.</p><div class="cta"><button class="btn primary" id="continueBtn">Continuer</button><button class="btn ghost" id="newBtn">Nouvelle chronologie</button></div></div></div>
+<div class="grid"><div class="card span4"><h3>Campagne</h3><p id="homeLast" class="muted"></p></div><div class="card span4"><h3>État du monde</h3><p id="worldState" class="muted"></p></div><div class="card span4"><h3>Compagnons</h3><p id="homeComp" class="muted"></p></div></div>
+</section>
+
+<section id="adventure" class="screen"><div class="grid">
+<div class="card span8"><div class="eyebrow" id="chapterLabel"></div><h2 id="sceneTitle"></h2><div id="storyText" class="story"></div><div id="moralBox"></div><div id="choices" class="choices"></div><div class="actionbox"><textarea id="freeAction" placeholder="Ex. « observer les gardes », « voler la clé », « agir au hasard », « demander conseil à Mira »…"></textarea><button class="btn gold" id="actBtn">Agir</button></div></div>
+<div class="card span4"><div class="stats"><div class="stat"><b id="hpStat">24</b><span>PV</span></div><div class="stat"><b id="xpStat">0</b><span>XP</span></div><div class="stat"><b id="goldStat">18</b><span>Or</span></div><div class="stat"><b id="repStat">0</b><span>Rép.</span></div></div><h3>Destin</h3><div id="dice" class="dice">20</div><p id="diceText" class="muted" style="text-align:center"></p><button class="btn ghost" style="width:100%" id="rollBtn">Lancer un d20</button></div>
+<div class="card span12"><h3>Chronique récente</h3><div class="log" id="log"></div></div>
+</div></section>
+
+<section id="combat" class="screen"><div class="grid">
+<div class="card span7"><div class="eyebrow">Combat tactique</div><h2 id="combatTitle">Aucun combat</h2><div id="combatArea"></div></div>
+<div class="card span5"><h2>Groupe</h2><div id="partyCombat"></div><h3>Actions</h3><div id="combatActions" class="choices"></div></div>
+</div></section>
+
+<section id="map" class="screen"><div class="card"><div class="eyebrow">Veyre</div><h2>Carte des ombres</h2><img class="map" src="assets/map.svg" alt=""><div id="locations"></div></div></section>
+
+<section id="character" class="screen"><div class="grid">
+<div class="card span6"><div class="eyebrow">Humain • Voleur</div><h2>Lautrec</h2><div id="charStats"></div></div>
+<div class="card span6"><h2>Équipement</h2><div id="equipment"></div><h3>Inventaire</h3><div id="inventory"></div></div>
+<div class="card span6"><h2>Compagnons</h2><div id="companions"></div></div>
+<div class="card span6"><h2>Relations & factions</h2><div id="relations"></div></div>
+<div class="card span12"><h2>Talents & blessures</h2><div class="two"><div id="talents"></div><div id="injuries"></div></div></div>
+</div></section>
+
+<section id="world" class="screen"><div class="grid">
+<div class="card span6"><h2>Quêtes</h2><div id="questList"></div></div>
+<div class="card span6"><h2>Marchand</h2><div id="shop"></div></div>
+<div class="card span6"><h2>Secrets</h2><div id="secretList"></div></div>
+<div class="card span6"><h2>Événements du monde</h2><div id="worldEvents"></div></div>
+<div class="card span12"><h2>Journal</h2><div class="log" id="journal"></div></div>
+</div></section>
+</main>
+
+<nav class="tabs">
+<button class="tab active" data-screen="home"><span>⌂</span>Accueil</button>
+<button class="tab" data-screen="adventure"><span>✦</span>Aventure</button>
+<button class="tab" data-screen="combat"><span>⚔</span>Combat</button>
+<button class="tab" data-screen="map"><span>⌖</span>Carte</button>
+<button class="tab" data-screen="character"><span>♟</span>Groupe</button>
+<button class="tab" data-screen="world"><span>☷</span>Monde</button>
+</nav>
+<div id="toast" class="toast"></div><script src="app.js"></script></body></html>

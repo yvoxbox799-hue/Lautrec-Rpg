@@ -1,0 +1,17 @@
+{
+  "name": "Lautrec — Les Mémoires de l’Ombre",
+  "short_name": "Lautrec RPG",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f0b0e",
+  "theme_color": "#34131b",
+  "description": "RPG narratif PWA autour de Lautrec.",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
