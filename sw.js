@@ -1,5 +1,5 @@
-const CACHE='lautrec-rpg-v6';
-const ASSETS=['./','./index.html','./styles.css?v=6','./v4.css?v=6','./v5.css?v=6','./explore.css?v=6','./app.js?v=6','./v4.js?v=6','./v5.js?v=6','./explore.js?v=6','./manifest.webmanifest','./assets/icon.svg','./assets/hero.svg','./assets/map.svg','./assets/veyre-night.svg','./assets/story/awakening.webp','./assets/story/tunnels.webp','./assets/story/mirror.webp'];
+const CACHE='lautrec-rpg-v6-1';
+const ASSETS=['./','./index.html','./styles.css?v=6.1','./v4.css?v=6.1','./v5.css?v=6.1','./explore.css?v=6.1','./action-v6.css?v=6.1','./app.js?v=6.1','./v4.js?v=6.1','./v5.js?v=6.1','./explore.js?v=6.1','./action-v6.js?v=6.1','./manifest.webmanifest','./assets/icon.svg','./assets/hero.svg','./assets/map.svg','./assets/veyre-night.svg','./assets/story/awakening.webp','./assets/story/tunnels.webp','./assets/story/mirror.webp'];
 
 self.addEventListener('install',event=>{
   self.skipWaiting();
